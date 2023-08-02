@@ -11,7 +11,13 @@ router.get("/", isAuthenticated, (req, res) => {
 
 router.get("/login", (req, res) => res.render("login"));
 router.get("/register", (req, res) => res.render("register"));
-router.get("/general", (req, res) => res.render("dashboard"));
+
+// Rutas adicionales
+
+router.get("/Gallery", (req, res) => {});
+router.get("/profile", isAuthenticated, (req, res) => {});
+router.get("/donate", isAuthenticated, (req, res) => {});
+
 // Cerrar sesion
 router.get("/logout", logout);
 

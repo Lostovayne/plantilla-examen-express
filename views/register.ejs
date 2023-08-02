@@ -11,27 +11,45 @@
 <body>
     <div class=" d-flex justify-content-center align-items-center min-vh-100">
 
-                <div class="card" style="width: 20rem;">
+                <div class="card col-md-6 "  >
                     <div class="card-body">
                         <div class="card-title text-center">
                             <h4>Registrarse</h4>
                         </div>
-                    <form id="FormRegister">
+                    <form id="FormRegister" class="row">
+                            <!-- Datos User -->
+                                <div class="form-outline mb-4 col-md-6">
+                                <label class="form-label" for="name">Nombre</label>
+                                <input type="text" id="name" name="name" class="form-control" required />
+                                </div>
+
+
+                                <div class="form-outline mb-4 col-md-6">
+                                    <label class="form-label" for="lastName">Apellido</label>
+                                    <input type="text" id="lastName" name="lastName" class="form-control" required />
+                                </div>
+                            
+                                <div class="form-outline mb-4 col-md-6">
+                                    <label class="form-label" for="rut">Rut</label>
+                                    <input type="text" id="rut" name="rut" class="form-control" required />
+                                </div>
+
+
                         <!-- Email input -->
-                            <div class="form-outline mb-4">
+                            <div class="form-outline mb-4 col-md-6">
                                 <label class="form-label" for="email">Email</label>
-                                <input type="email" id="email" name="email" class="form-control" />
+                                <input type="email" id="email" name="email" class="form-control" required />
                             </div>
 
                         <!-- Password input -->
-                            <div class="form-outline mb-4">
+                            <div class="form-outline mb-4 col-md-6 ">
                                 <label class="form-label" for="password">Password</label>
-                                <input type="password" name="password" id="password" class="form-control" />
+                                <input type="password" name="password" id="password" class="form-control" required />
                             </div>
 
-                            <div class="form-outline mb-4">
-                                <label class="form-label" for="repeatPassword">Password</label>
-                                <input type="password" name="repeatPassword" id="repeatPassword" class="form-control" />
+                            <div class="form-outline mb-4 col-md-6">
+                                <label class="form-label" for="repeatPassword">Repeat Password</label>
+                                <input type="password" name="repeatPassword" id="repeatPassword" class="form-control" required />
                             </div>
                         </div>
 
