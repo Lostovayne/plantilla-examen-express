@@ -67,6 +67,66 @@ window.addEventListener("DOMContentLoaded", () => {
                 }
             });
         }
+
+        if (window.location.pathname === "/login") {
+            const formLogin = document.querySelector("#FormLogin");
+
+            formLogin.addEventListener("submit", async (e) => {
+                e.preventDefault();
+                const formData = new FormData(formLogin);
+                const data = Object.fromEntries(formData.entries());
+
+                console.log(data);
+
+                if (!data.email || !data.password) {
+                    Toastify({
+                        text: "Todos los campos son obligatorios",
+                        duration: 3000,
+                        close: false,
+                        gravity: "top",
+                        position: "right",
+                        backgroundColor: "red",
+                        stopOnFocus: true,
+                    }).showToast();
+                } else {
+                    const response = await fetch("/login", {
+                        method: "POST",
+                        body: JSON.stringify(data),
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                    });
+
+                    const responseData = await response.json();
+
+                    if (responseData.status === "success") {
+                        Toastify({
+                            text: responseData.msg,
+                            duration: 3000,
+                            close: false,
+                            gravity: "top",
+                            position: "right",
+                            backgroundColor: "green",
+                            stopOnFocus: true,
+                        }).showToast();
+
+                        window.location.href = "/";
+                    }
+
+                    if (responseData.status === "error") {
+                        Toastify({
+                            text: responseData.msg,
+                            duration: 3000,
+                            close: false,
+                            gravity: "top",
+                            position: "right",
+                            backgroundColor: "red",
+                            stopOnFocus: true,
+                        }).showToast();
+                    }
+                }
+            });
+        }
     }
 
     init();

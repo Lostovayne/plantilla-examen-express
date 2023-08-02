@@ -12,8 +12,15 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cookieParser());
 app.use(UserRouter);
-// app.use(cookieParser());
+
+// app.use(function (req, res, next) {
+//     if (!req.user) {
+//         res.header("Cache-Control", "no-cache, private, no-store, must-revalidate");
+//     }
+//     next();
+// });
 
 connectionDB();
 

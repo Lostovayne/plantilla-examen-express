@@ -7,6 +7,13 @@
     </head>
     <body>
         <h1>Soy la ruta base!</h1>
+        <h2>Bienvenido</h2>
+
+        <% if (user) { %>
+        <span> <%= user.email %></span>
+        <% } %>
+
+        <a href="/logout">logout</a>
         <!-- card -->
         <!-- container -->
     </body>
