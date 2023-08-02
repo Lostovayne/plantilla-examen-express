@@ -8,6 +8,7 @@ dotenv.config({
 });
 
 export const Register = async (req, res) => {
+    console.log(req.body);
     try {
         const { email, password } = req.body;
         const PasswordHash = bcrypt.hashSync(password);

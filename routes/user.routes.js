@@ -14,9 +14,9 @@ router.get("/register", (req, res) => res.render("register"));
 
 // Rutas adicionales
 
-router.get("/Gallery", (req, res) => {});
-router.get("/profile", isAuthenticated, (req, res) => {});
-router.get("/donate", isAuthenticated, (req, res) => {});
+// router.get("/gallery", (req, res) => {});
+// router.get("/profile", isAuthenticated, (req, res) => {});
+// router.get("/donate", isAuthenticated, (req, res) => {});
 
 // Cerrar sesion
 router.get("/logout", logout);
