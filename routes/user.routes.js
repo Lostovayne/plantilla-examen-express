@@ -8,8 +8,10 @@ router.get("/", isAuthenticated, (req, res) => {
         user: req.user,
     });
 });
+
 router.get("/login", (req, res) => res.render("login"));
 router.get("/register", (req, res) => res.render("register"));
+router.get("/general", (req, res) => res.render("dashboard"));
 // Cerrar sesion
 router.get("/logout", logout);
 
