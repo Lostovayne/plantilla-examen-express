@@ -13,14 +13,17 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
-app.use(UserRouter);
+app.use(function (req, res, next) {
+    if (!req.user) {
+        res.header(
+            "Cache-Control",
+            "no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0"
+        );
+    }
+    next();
+});
 
-// app.use(function (req, res, next) {
-//     if (!req.user) {
-//         res.header("Cache-Control", "no-cache, private, no-store, must-revalidate");
-//     }
-//     next();
-// });
+app.use(UserRouter);
 
 connectionDB();
 

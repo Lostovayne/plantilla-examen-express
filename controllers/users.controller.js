@@ -50,35 +50,30 @@ export const Login = async (req, res) => {
                 status: "error",
                 msg: "El usuario no existe",
             });
-        }
-        const user = result[0];
-
-        if (bcrypt.compareSync(password, user.password)) {
-            // res.status(200).json({
-            //     status: "success",
-            //     msg: "Usuario autenticado",
-            //     id: user.id,
-            // });
-
-            const token = jwt.sign({ id: user.id }, process.env.SECRET_KEY, {
-                expiresIn: "1h",
-            });
-
-            res.cookie("jwt", token, {
-                maxAge: 3600000,
-                httpOnly: true,
-            })
-                .status(200)
-                .json({
-                    status: "success",
-                    msg: "Usuario autenticado",
-                    id: user.id,
-                });
         } else {
-            res.status(400).json({
-                status: "error",
-                msg: "Contraseña incorrecta",
-            });
+            const user = result[0];
+
+            if (bcrypt.compareSync(password, user.password)) {
+                const token = jwt.sign({ id: user.id }, process.env.SECRET_KEY, {
+                    expiresIn: "1h",
+                });
+
+                res.cookie("jwt", token, {
+                    maxAge: 3600000,
+                    httpOnly: true,
+                })
+                    .status(200)
+                    .json({
+                        status: "success",
+                        msg: "Usuario autenticado",
+                        id: user.id,
+                    });
+            } else {
+                res.status(400).json({
+                    status: "error",
+                    msg: "Contraseña incorrecta",
+                });
+            }
         }
     } catch (error) {
         res.status(500).json({
