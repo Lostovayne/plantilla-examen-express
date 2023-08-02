@@ -36,9 +36,9 @@
             >
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="w-100 bg-dark"></div>
+            <!-- <div class="w-100 bg-dark d-none d-md-block "></div> -->
             <div class="navbar-nav">
-                <div class="nav-item text-nowrap">
+                <div class="nav-item text-nowrap d-none d-md-block">
                     <a class="nav-link px-3" href="/logout">Cerrar sesión</a>
                 </div>
             </div>
@@ -46,11 +46,11 @@
 
         <div class="container-fluid">
             <div class="row">
-                <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse shadow-none">
+                <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse shadow-none top-0 start-0">
                     <div class="position-sticky pt-3">
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="/"> Perfil </a>
+                                <a class="nav-link active" aria-current="page" href="/"> Inicio </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="/Galeria"> Galeria </a>
@@ -58,6 +58,15 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="/Donaciones"> Donaciones </a>
                             </li>
+                                <li class="nav-item">
+                                <a class="nav-link" href="/Perfil"> Donaciones </a>
+                            </li>
+
+                            </li class="">
+                                <li class="nav-item d-md-none">
+                                <a class="nav-link" href="/Perfil"> Cerrar Sesion </a>
+                            </li>
+                           
                         </ul>
                     </div>
                 </nav>
