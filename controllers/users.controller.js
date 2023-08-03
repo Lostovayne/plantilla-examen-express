@@ -107,3 +107,52 @@ export const logout = (req, res) => {
     res.clearCookie("jwt");
     res.redirect("/api/users/");
 };
+
+export const UpdateUser = async (req, res) => {
+    console.log("Mostrando los datos");
+
+    try {
+        const id = req.params.userid;
+        const { nombre, apellido, correo } = req.body;
+        const [result] = await pool.execute(
+            "UPDATE usuarios SET nombre = ?, apellido = ?, correo = ? WHERE UserID = ?",
+            [nombre, apellido, correo, id]
+        );
+
+        res.status(200).json({
+            status: "success",
+            msg: "Usuario actualizado",
+        });
+    } catch (error) {
+        res.status(500).json({
+            status: "error",
+            msg: "Error al actualizar el usuario",
+            error,
+        });
+    }
+};
+
+export const AllEvents = async (req, res) => {
+    try {
+        const sql = `
+            SELECT e.Nombre AS NombreEvento, e.Descripcion AS DescripcionEvento, e.FechaHora AS FechaHoraEvento, e.Ubicacion AS UbicacionEvento, u.Nombre AS NombreUsuario, u.Apellido AS ApellidoUsuario, u.Correo AS CorreoUsuario, r.ArbolesCantidad AS CantidadArboles
+            FROM eventos e
+            JOIN registroeventos r ON e.EventoID = r.EventoID
+            JOIN usuarios u ON u.UserID = r.UserID;
+        `;
+
+        const [results] = await pool.execute(sql);
+
+        console.log(results);
+
+        res.render("eventos", {
+            events: results,
+        });
+    } catch (error) {
+        res.status(500).json({
+            status: "error",
+            msg: "Error retrieving events",
+            error,
+        });
+    }
+};

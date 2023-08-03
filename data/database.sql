@@ -52,3 +52,49 @@ CREATE TABLE
         Descripcion VARCHAR(255),
         FOREIGN KEY (EventoID) REFERENCES Eventos (EventoID)
     );
+
+INSERT INTO
+    eventos (Nombre, Descripcion, FechaHora, Ubicacion)
+VALUES
+    (
+        'Evento1',
+        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio magni quisquam ut rem aliquid facilis fuga aperiam dolor. Accusantium, provident?',
+        '2020-10-10 14:25:00',
+        'Playa Palomares'
+    ),
+    (
+        'Evento2',
+        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio magni quisquam ut rem aliquid facilis fuga aperiam dolor. Accusantium, provident?',
+        '2023-02-05 18:30:00',
+        'Cerro cristo'
+    ),
+    (
+        'Evento3',
+        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio magni quisquam ut rem aliquid facilis fuga aperiam dolor. Accusantium, provident?',
+        '2023-02-05 18:30:00',
+        'Cerro navia'
+    );
+
+INSERT INTO
+    registroeventos (UserID, EventoID, ArbolesCantidad)
+VALUES
+    (1, 1, 10);
+
+INSERT INTO
+    registroeventos (UserID, EventoID, ArbolesCantidad)
+VALUES
+    (1, 2, 20);
+
+SELECT
+    e.Nombre AS NombreEvento,
+    e.Descripcion AS DescripcionEvento,
+    e.FechaHora AS FechaHoraEvento,
+    e.Ubicacion AS UbicacionEvento,
+    u.Nombre AS NombreUsuario,
+    u.Apellido AS ApellidoUsuario,
+    u.Correo AS CorreoUsuario,
+    r.ArbolesCantidad AS CantidadArboles
+FROM
+    eventos e
+    JOIN registroeventos r ON e.EventoID = r.EventoID
+    JOIN usuarios u ON u.UserID = r.UserID;

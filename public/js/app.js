@@ -127,6 +127,49 @@ window.addEventListener("DOMContentLoaded", () => {
                 }
             });
         }
+
+        if (window.location.pathname === "/api/users/perfil") {
+            const formUpdate = document.querySelector("#FormUpdate");
+
+            formUpdate.addEventListener("submit", async (e) => {
+                e.preventDefault();
+                const formData = new FormData(formUpdate);
+                const data = Object.fromEntries(formData.entries());
+                console.log(data);
+                const response = await fetch(`/api/users/${data.id}`, {
+                    method: "PUT",
+                    body: JSON.stringify(data),
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                });
+
+                const responseData = await response.json();
+                console.log(responseData);
+
+                if (responseData.status === "success") {
+                    Toastify({
+                        text: responseData.msg,
+                        duration: 3000,
+                        close: false,
+                        gravity: "top",
+                        position: "right",
+                        backgroundColor: "green",
+                        stopOnFocus: true,
+                    }).showToast();
+                } else {
+                    Toastify({
+                        text: responseData.msg,
+                        duration: 3000,
+                        close: false,
+                        gravity: "top",
+                        position: "right",
+                        backgroundColor: "red",
+                        stopOnFocus: true,
+                    }).showToast();
+                }
+            });
+        }
     }
 
     init();

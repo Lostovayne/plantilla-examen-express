@@ -50,7 +50,7 @@
                     <div class="position-sticky pt-3">
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="/api/users"> Inicio </a>
+                                <a class="nav-link " aria-current="page" href="/api/users"> Inicio </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="/galeria"> Galeria </a>
@@ -59,7 +59,7 @@
                                 <a class="nav-link" href="/donaciones"> Donaciones </a>
                             </li>
                                 <li class="nav-item">
-                                <a class="nav-link" href="/api/users/perfil"> Perfil </a>
+                                <a class="nav-link active" href="/api/users/perfil"> Perfil </a>
                             </li>
 
                             </li>
@@ -80,9 +80,19 @@
                     <div
                         class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
                     >
-                       <% if (user) { %>
-                        <h4> Bienvenido: <%= user.Correo %></span>
-                        <% } %>
+
+                    <form class="d-flex flex-column"  id="FormUpdate">
+                        <h2>Editar perfil</h2>
+                        <input type="hidden" name="id" value="<%= userData.id %>">
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" name="nombre" value="<%= userData.nombre %>">   
+                        <label for="apellido">Apellido:</label>
+                        <input type="text" name="apellido" value="<%= userData.apellido %>">
+                        <label for="correo">Correo:</label>
+                        <input type="email" name="correo" value="<%= userData.correo %>">
+                    
+                        <button class="btn btn-primary " type="submit">Actualizar</button>
+                    </form>
                     </div>
                 </main>
             </div>
@@ -94,5 +104,6 @@
             integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
             crossorigin="anonymous"
         ></script>
+        <script src="/js/app.js"></script>
     </body>
 </html>
