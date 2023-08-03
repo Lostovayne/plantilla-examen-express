@@ -160,3 +160,31 @@ export const AllEvents = async (req, res) => {
         });
     }
 };
+
+export const AddEvent = async (req, res) => {
+    try {
+        const UserEvent = {
+            id: req.user.UserID,
+            idEvent: Number(req.body.evento),
+            ArbolesCantidad: Number(req.body.cantidadArboles),
+        };
+
+        const registerUserEvent = await pool.execute(
+            "INSERT INTO registroeventos (UserID, EventoID, ArbolesCantidad) VALUES (?, ?, ?)",
+            [UserEvent.id, UserEvent.idEvent, UserEvent.ArbolesCantidad]
+        );
+
+        console.log(registerUserEvent);
+
+        res.status(200).json({
+            status: "success",
+            msg: "Registrado en el evento",
+        });
+    } catch (error) {
+        res.status(500).json({
+            status: "error",
+            msg: "Error al registrar el evento",
+            error,
+        });
+    }
+};
