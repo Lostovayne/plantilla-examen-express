@@ -76,8 +76,6 @@ window.addEventListener("DOMContentLoaded", () => {
                 const formData = new FormData(formLogin);
                 const data = Object.fromEntries(formData.entries());
 
-                console.log(data);
-
                 if (!data.email || !data.password) {
                     Toastify({
                         text: "Todos los campos son obligatorios",
@@ -145,7 +143,47 @@ window.addEventListener("DOMContentLoaded", () => {
                 });
 
                 const responseData = await response.json();
-                console.log(responseData);
+
+                if (responseData.status === "success") {
+                    Toastify({
+                        text: responseData.msg,
+                        duration: 3000,
+                        close: false,
+                        gravity: "top",
+                        position: "right",
+                        backgroundColor: "green",
+                        stopOnFocus: true,
+                    }).showToast();
+                } else {
+                    Toastify({
+                        text: responseData.msg,
+                        duration: 3000,
+                        close: false,
+                        gravity: "top",
+                        position: "right",
+                        backgroundColor: "red",
+                        stopOnFocus: true,
+                    }).showToast();
+                }
+            });
+        }
+
+        if (window.location.pathname === "/api/events/all") {
+            const FormEvent = document.querySelector("#FormEvent");
+            FormEvent.addEventListener("submit", async (e) => {
+                e.preventDefault();
+                const formData = new FormData(FormEvent);
+                const data = Object.fromEntries(formData.entries());
+
+                const response = await fetch("/api/events/all", {
+                    method: "POST",
+                    body: JSON.stringify(data),
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                });
+
+                const responseData = await response.json();
 
                 if (responseData.status === "success") {
                     Toastify({

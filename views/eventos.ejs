@@ -101,12 +101,12 @@
 
                   <section class="section2 col-md-6">
                    <!-- registro.ejs -->
-
-                    <form action="/registro" method="POST" class="d-flex flex-column col-5 mx-auto mt-5">
+                    <h3 class="mt-2 text-center">Registrarse en un proximo evento</h3>
+                    <form  class="d-flex flex-column col-5 mx-auto" id="FormEvent">
                     <label for="evento">Selecciona un evento:</label>
                     <select id="evento" name="evento" required>
-                        <% events.forEach(evento => { %>
-                        <option value="<%= evento.NombreEvento %>"><%= evento.NombreEvento %></option>
+                        <% eventsform.forEach(evento => { %>
+                        <option value="<%= evento.EventoID %>"><%= evento.Nombre %></option>
                         <% }) %>
                     </select><br>
 

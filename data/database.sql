@@ -58,20 +58,20 @@ INSERT INTO
 VALUES
     (
         'Evento1',
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio magni quisquam ut rem aliquid facilis fuga aperiam dolor. Accusantium, provident?',
+        'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
         '2020-10-10 14:25:00',
         'Playa Palomares'
     ),
     (
         'Evento2',
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio magni quisquam ut rem aliquid facilis fuga aperiam dolor. Accusantium, provident?',
+        'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
         '2023-02-05 18:30:00',
         'Cerro cristo'
     ),
     (
         'Evento3',
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio magni quisquam ut rem aliquid facilis fuga aperiam dolor. Accusantium, provident?',
-        '2023-02-05 18:30:00',
+        'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+        '2023-11-20 18:30:00',
         'Cerro navia'
     );
 

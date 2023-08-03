@@ -142,11 +142,15 @@ export const AllEvents = async (req, res) => {
         `;
 
         const [results] = await pool.execute(sql);
+        const sqlform = `SELECT * FROM eventos
+        WHERE FechaHora > NOW();`;
 
-        console.log(results);
+        const [resultsform] = await pool.execute(sqlform);
+        console.log(resultsform);
 
         res.render("eventos", {
             events: results,
+            eventsform: resultsform,
         });
     } catch (error) {
         res.status(500).json({
