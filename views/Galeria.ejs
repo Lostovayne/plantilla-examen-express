@@ -50,7 +50,7 @@
                     <div class="position-sticky pt-3">
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="/api/users"> Inicio </a>
+                                <a class="nav-link " aria-current="page" href="/api/users"> Inicio </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="/api/events"> Galeria </a>
@@ -59,32 +59,60 @@
                                 <a class="nav-link" href="/donaciones"> Donaciones </a>
                             </li>
                                 <li class="nav-item">
-                                <a class="nav-link" href="/api/users/perfil"> Perfil </a>
+                                <a class="nav-link " href="/api/users/perfil"> Perfil </a>
                             </li>
-
                             </li>
                                 <li class="nav-item">
-                                <a class="nav-link" href="/api/events/all"> Eventos </a>
+                                <a class="nav-link active" href="/api/events/all"> Eventos </a>
                             </li>
+
 
                             </li class="">
                                 <li class="nav-item d-md-none">
                                 <a class="nav-link" href="/api/users/logout"> Cerrar Sesion </a>
                             </li>
+
+                            
                            
                         </ul>
                     </div>
                 </nav>
 
-                <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                    <div
-                        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
-                    >
-                       <% if (user) { %>
-                        <h4> Bienvenido: <%= user.Correo %></span>
-                        <% } %>
+                <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 row">
+                    <h2>Galeria de Imagenes</h2>
+
+                    <div class="col-3" style="height: 300px;">
+                        <img src="https://cdn0.ecologiaverde.com/es/posts/9/6/2/que_es_la_reforestacion_definicion_sencilla_1269_0_600.jpg" alt="imagen1" class="img-fluid rounded img-thumbnail w-100 h-100 ">
                     </div>
+
+                    
+                    <div class="col-3" style="height: 300px;">
+                        <img src="https://t4.ftcdn.net/jpg/04/52/53/41/360_F_452534139_QHE591K82hdhPBYJl2fNVmKkheSmiLu5.jpg" alt="imagen1" class="img-fluid rounded img-thumbnail w-100 h-100 ">
+                    </div>
+
+
+                    
+                    <div class="col-3" style="height: 300px;">
+                        <img src="https://noticiasgreen.files.wordpress.com/2021/06/img-20210618-wa0042.jpg?w=1024" alt="imagen1" class="img-fluid rounded img-thumbnail w-100 h-100 ">
+                    </div>
+
+
+                    
+                    <div class="col-3" style="height: 300px;">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWeWP2t8iM8v2DoAGNq58jM-wi5fTzjeLZZQ&usqp=CAU" alt="imagen1" class="img-fluid rounded img-thumbnail w-100 h-100 ">
+                    </div>
+
+
+                    
+                    <div class="col-3" style="height: 300px;">
+                        <img src="https://www.eleconomista.com.mx/__export/1565662526565/sites/eleconomista/img/2019/08/12/shutterstock_1041153076.jpg_1832999950.jpg" alt="imagen1" class="img-fluid rounded img-thumbnail w-100 h-100 ">
+                    </div>
+                    
+               
                 </main>
+
+              
+
             </div>
         </div>
 
@@ -94,5 +122,7 @@
             integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
             crossorigin="anonymous"
         ></script>
+        <script src="/js/app.js"></script>
     </body>
 </html>
+

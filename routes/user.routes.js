@@ -36,6 +36,9 @@ router.get("/api/users/perfil", isAuthenticated, (req, res) => {
 
 router.get("/api/users/login", (req, res) => res.render("login"));
 router.get("/api/users/register", (req, res) => res.render("register"));
+router.get("/api/events", isAuthenticated, (req, res) => {
+    res.render("Galeria");
+});
 router.get("/api/events/all", isAuthenticated, AllEvents);
 router.post("/api/events/all", isAuthenticated, AddEvent);
 
