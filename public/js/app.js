@@ -208,6 +208,49 @@ window.addEventListener("DOMContentLoaded", () => {
                 }
             });
         }
+
+        if (window.location.pathname === "/api/donations") {
+            const FormDonation = document.querySelector("#FormDonation");
+            FormDonation.addEventListener("submit", async (e) => {
+                e.preventDefault();
+                const formData = new FormData(FormDonation);
+                const data = Object.fromEntries(formData.entries());
+
+                const response = await fetch("/api/donations", {
+                    method: "POST",
+                    body: JSON.stringify(data),
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                });
+
+                const responseData = await response.json();
+
+                if (responseData.status === "success") {
+                    Toastify({
+                        text: responseData.msg,
+                        duration: 3000,
+                        close: false,
+                        gravity: "top",
+                        position: "right",
+                        backgroundColor: "green",
+                        stopOnFocus: true,
+                    }).showToast();
+                }
+
+                if (responseData.status === "error") {
+                    Toastify({
+                        text: responseData.msg,
+                        duration: 3000,
+                        close: false,
+                        gravity: "top",
+                        position: "right",
+                        backgroundColor: "red",
+                        stopOnFocus: true,
+                    }).showToast();
+                }
+            });
+        }
     }
 
     init();

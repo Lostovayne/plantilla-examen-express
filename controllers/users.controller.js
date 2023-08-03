@@ -2,6 +2,7 @@ import pool from "../database/config.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
+import { sendMailer } from "./../mail/node_mailer.js";
 
 dotenv.config({
     path: "./env/.env",
@@ -174,16 +175,48 @@ export const AddEvent = async (req, res) => {
             [UserEvent.id, UserEvent.idEvent, UserEvent.ArbolesCantidad]
         );
 
-        console.log(registerUserEvent);
+        const mensaje = "Se ha registrado el evento correctamente, porfavor siga los pasos correspondientes";
+
+        console.log(req.user);
+        sendMailer(req.user.Correo, mensaje);
 
         res.status(200).json({
             status: "success",
-            msg: "Registrado en el evento",
+            msg: "Se envió un correo confirmando la asistencia!",
         });
     } catch (error) {
         res.status(500).json({
             status: "error",
             msg: "Error al registrar el evento",
+            error,
+        });
+    }
+};
+
+export const Donations = async (req, res) => {
+    try {
+        const donation = {
+            id: req.user.UserID,
+            Monto: Number(req.body.Monto),
+        };
+
+        const registerDonation = await pool.execute("INSERT INTO donaciones (UserID, Monto) VALUES (?, ?)", [
+            donation.id,
+            donation.Monto,
+        ]);
+
+        console.log(registerDonation);
+
+        sendMailer(req.user.Correo, `Se ha registrado la donacion por un monto de ${req.body.Monto}`);
+
+        res.status(200).json({
+            status: "success",
+            msg: "Se envió un correo confirmando la donacion!",
+        });
+    } catch (error) {
+        res.status(500).json({
+            status: "error",
+            msg: "Error al registrar la donacion",
             error,
         });
     }

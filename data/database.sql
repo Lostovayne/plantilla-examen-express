@@ -36,7 +36,7 @@ CREATE TABLE
 
 CREATE TABLE
     Donaciones (
-        DonacionID INT PRIMARY KEY,
+        DonacionID INT PRIMARY KEY AUTO_INCREMENT,
         UserID INT,
         Monto INT,
         FechaDonacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,

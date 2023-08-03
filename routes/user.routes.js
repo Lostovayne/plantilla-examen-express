@@ -7,6 +7,7 @@ import {
     isAuthenticated,
     logout,
     AddEvent,
+    Donations,
 } from "../controllers/users.controller.js";
 
 const router = Router();
@@ -39,6 +40,11 @@ router.get("/api/users/register", (req, res) => res.render("register"));
 router.get("/api/events", isAuthenticated, (req, res) => {
     res.render("Galeria");
 });
+router.get("/api/donations", isAuthenticated, (req, res) => {
+    res.render("donation");
+});
+router.post("/api/donations", isAuthenticated, Donations);
+
 router.get("/api/events/all", isAuthenticated, AllEvents);
 router.post("/api/events/all", isAuthenticated, AddEvent);
 

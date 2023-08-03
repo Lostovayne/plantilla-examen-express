@@ -48,9 +48,9 @@
             <div class="row">
                 <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse shadow-none top-0 start-0">
                     <div class="position-sticky pt-3">
-                        <ul class="nav flex-column">
+                       <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="/api/users"> Inicio </a>
+                                <a class="nav-link " aria-current="page" href="/api/users"> Inicio </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="/api/events"> Galeria </a>
@@ -67,7 +67,7 @@
 
                             </li>
                                 <li class="nav-item">
-                                <a class="nav-link" href="/api/donations"> Donaciones </a>
+                                <a class="nav-link active" href="/api/donations"> Donaciones </a>
                             </li>
 
                             </li class="">
@@ -79,36 +79,22 @@
                     </div>
                 </nav>
 
-                <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                    <div
-                        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
-                    >
-                       <% if (user) { %>
-                        <h4> Bienvenido: <%= user.Correo %></span>
-                        <% } %>
+                <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 row">
+                   
+                    <h5>Hace tu donacion</h5>
+                    <p>Esto mejorará la eficiencia con la que trabajamos!</p>
 
-
-
-                    </div>
-
-                      <div>
-                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolor, accusantium error. Numquam assumenda, a voluptatibus porro nulla accusantium possimus ex delectus atque quia deleniti debitis? Omnis ut illo fugit unde inventore? Accusantium, aspernatur sed vel sapiente ea sit iure culpa voluptatibus quam cumque natus molestias quia deleniti possimus nesciunt itaque?</p>
-                    </div>
-
-                    <h3>
-                        Recientes Proyectos
-                    </h3>
-
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure voluptatum veritatis nisi laudantium, nobis atque tempora asperiores dicta rem? Obcaecati accusamus saepe tempore voluptas a! Fugit illum odit et recusandae.</p>
-
-                    <section class="row">
-                        <h5>Informacion sobre nuestras participaciones</h5>
-                        <p class="col">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quibusdam, officiis? Fuga molestiae explicabo, nesciunt amet perferendis dolore corporis. Pariatur accusamus ab sequi cumque quisquam dolorem aspernatur facere qui, tempore saepe?</p>
-                        <p class="col">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum incidunt fugit quasi magnam dicta, eum cum molestiae, facere laboriosam aperiam voluptates impedit nemo est sit iure beatae reprehenderit cumque voluptate!</p>
-
-                    </section>
-
+                     <form id="FormDonation" class="d-flex flex-column col-4 mx-auto">
+                        <label for="monto">Monto:</label>
+                        <input type="number" name="Monto" id="monto" required>
+                        <br>
+                        <button class="btn btn-primary" type="submit">Donar</button>
+                    </form>
+                                    
                 </main>
+
+              
+
             </div>
         </div>
 
@@ -118,5 +104,7 @@
             integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
             crossorigin="anonymous"
         ></script>
+        <script src="/js/app.js"></script>
     </body>
 </html>
+
