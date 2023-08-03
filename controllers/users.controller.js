@@ -10,10 +10,10 @@ dotenv.config({
 export const Register = async (req, res) => {
     console.log(req.body);
     try {
-        const { email, password } = req.body;
+        const { name, lastName, rut, email, password } = req.body;
         const PasswordHash = bcrypt.hashSync(password);
-        const infoUser = { email, password: PasswordHash };
-        const [result] = await pool.execute("SELECT * FROM users WHERE email = ?", [infoUser.email]);
+        const infoUser = { name, lastName, rut, email, password: PasswordHash };
+        const [result] = await pool.execute("SELECT * FROM usuarios WHERE correo = ?", [infoUser.email]);
 
         if (result.length > 0) {
             res.status(400).json({
@@ -21,10 +21,10 @@ export const Register = async (req, res) => {
                 msg: "El usuario ya existe",
             });
         } else {
-            const [rows] = await pool.execute("INSERT INTO users (email, password) VALUES (?, ?)", [
-                infoUser.email,
-                infoUser.password,
-            ]);
+            const [rows] = await pool.execute(
+                "INSERT INTO usuarios (nombre,apellido, rut,correo, contrasena) VALUES (?, ?,?,?,?)",
+                [infoUser.name, infoUser.lastName, infoUser.rut, infoUser.email, infoUser.password]
+            );
 
             res.status(201).json({
                 status: "success",
@@ -44,7 +44,9 @@ export const Register = async (req, res) => {
 export const Login = async (req, res) => {
     try {
         const { email, password } = req.body;
-        const [result] = await pool.execute("SELECT * FROM users WHERE email = ?", [email]);
+        const [result] = await pool.execute("SELECT * FROM usuarios WHERE Correo = ?", [email]);
+
+        console.log(result);
 
         if (result.length === 0) {
             res.status(400).json({
@@ -54,8 +56,8 @@ export const Login = async (req, res) => {
         } else {
             const user = result[0];
 
-            if (bcrypt.compareSync(password, user.password)) {
-                const token = jwt.sign({ id: user.id }, process.env.SECRET_KEY, {
+            if (bcrypt.compareSync(password, user.Contrasena)) {
+                const token = jwt.sign({ id: user.UserID }, process.env.SECRET_KEY, {
                     expiresIn: "1h",
                 });
 
@@ -67,7 +69,7 @@ export const Login = async (req, res) => {
                     .json({
                         status: "success",
                         msg: "Usuario autenticado",
-                        id: user.id,
+                        id: user.UserID,
                     });
             } else {
                 res.status(400).json({
@@ -89,7 +91,7 @@ export const isAuthenticated = async (req, res, next) => {
     if (req.cookies.jwt) {
         try {
             const decodificada = jwt.verify(req.cookies.jwt, process.env.SECRET_KEY);
-            const [rows] = await pool.execute("SELECT * FROM users WHERE id = ?", [decodificada.id]);
+            const [rows] = await pool.execute("SELECT * FROM usuarios WHERE UserID  = ?", [decodificada.id]);
             req.user = rows[0];
             next();
         } catch (error) {

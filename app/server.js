@@ -2,6 +2,7 @@ import express from "express";
 import { config } from "dotenv";
 import UserRouter from "../routes/user.routes.js";
 import cookieParser from "cookie-parser";
+import cors from "cors";
 import { connectionDB } from "./../database/config.js";
 
 config({ path: "./env/.env" });
@@ -22,6 +23,7 @@ app.use(function (req, res, next) {
     }
     next();
 });
+app.use(cors());
 
 app.use(UserRouter);
 
