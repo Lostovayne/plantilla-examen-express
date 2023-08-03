@@ -20,7 +20,7 @@
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
 
         <!-- Custom styles for this template -->
-        <link href="css/dashboard.css" rel="stylesheet" />
+        <link href="/css/dashboard.css" rel="stylesheet" />
     </head>
     <body>
         <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
@@ -39,7 +39,7 @@
             <!-- <div class="w-100 bg-dark d-none d-md-block "></div> -->
             <div class="navbar-nav">
                 <div class="nav-item text-nowrap d-none d-md-block">
-                    <a class="nav-link px-3" href="/logout">Cerrar sesión</a>
+                    <a class="nav-link px-3" href="/api/users/logout">Cerrar sesión</a>
                 </div>
             </div>
         </header>
@@ -53,18 +53,18 @@
                                 <a class="nav-link active" aria-current="page" href="/"> Inicio </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/Galeria"> Galeria </a>
+                                <a class="nav-link" href="/galeria"> Galeria </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/Donaciones"> Donaciones </a>
+                                <a class="nav-link" href="/donaciones"> Donaciones </a>
                             </li>
                                 <li class="nav-item">
-                                <a class="nav-link" href="/Perfil"> Perfil </a>
+                                <a class="nav-link" href="/api/users/perfil"> Perfil </a>
                             </li>
 
                             </li class="">
                                 <li class="nav-item d-md-none">
-                                <a class="nav-link" href="/Perfil"> Cerrar Sesion </a>
+                                <a class="nav-link" href="/api/users/logout"> Cerrar Sesion </a>
                             </li>
                            
                         </ul>
@@ -76,7 +76,7 @@
                         class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
                     >
                        <% if (user) { %>
-                        <h4> Bienvenido: <%= user.email %></span>
+                        <h4> Bienvenido: <%= user.Correo %></span>
                         <% } %>
                     </div>
                 </main>
@@ -89,6 +89,5 @@
             integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
             crossorigin="anonymous"
         ></script>
-        <script src="js/dashboard.js"></script>
     </body>
 </html>

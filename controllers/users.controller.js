@@ -99,11 +99,11 @@ export const isAuthenticated = async (req, res, next) => {
             next();
         }
     } else {
-        res.redirect("/login");
+        res.redirect("/api/users/login");
     }
 };
 
 export const logout = (req, res) => {
     res.clearCookie("jwt");
-    res.redirect("/");
+    res.redirect("/api/users/");
 };

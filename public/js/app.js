@@ -1,6 +1,6 @@
 window.addEventListener("DOMContentLoaded", () => {
     function init() {
-        if (window.location.pathname === "/register") {
+        if (window.location.pathname === "/api/users/register") {
             const formRegister = document.querySelector("#FormRegister");
 
             formRegister.addEventListener("submit", async (e) => {
@@ -30,7 +30,7 @@ window.addEventListener("DOMContentLoaded", () => {
                             stopOnFocus: true,
                         }).showToast();
                     } else {
-                        const response = await fetch("/register", {
+                        const response = await fetch("/api/users/register", {
                             method: "POST",
                             body: JSON.stringify(data),
                             headers: {
@@ -51,7 +51,7 @@ window.addEventListener("DOMContentLoaded", () => {
                                 stopOnFocus: true,
                             }).showToast();
 
-                            window.location.href = "/login";
+                            window.location.href = "/api/users/login";
                         } else {
                             Toastify({
                                 text: responseData.msg,
@@ -68,7 +68,7 @@ window.addEventListener("DOMContentLoaded", () => {
             });
         }
 
-        if (window.location.pathname === "/login") {
+        if (window.location.pathname === "/api/users/login") {
             const formLogin = document.querySelector("#FormLogin");
 
             formLogin.addEventListener("submit", async (e) => {
@@ -89,7 +89,7 @@ window.addEventListener("DOMContentLoaded", () => {
                         stopOnFocus: true,
                     }).showToast();
                 } else {
-                    const response = await fetch("/login", {
+                    const response = await fetch("/api/users/login", {
                         method: "POST",
                         body: JSON.stringify(data),
                         headers: {
@@ -110,7 +110,7 @@ window.addEventListener("DOMContentLoaded", () => {
                             stopOnFocus: true,
                         }).showToast();
 
-                        window.location.href = "/";
+                        window.location.href = "/api/users/";
                     }
 
                     if (responseData.status === "error") {
